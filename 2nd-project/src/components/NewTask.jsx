@@ -1,6 +1,6 @@
-import { useRef, useState } from 'react';
+import { useRef, useState } from "react";
 
-import './NewTask.css';
+import "./NewTask.css";
 
 function NewTask({ onAddTask, onCancel }) {
   const titleRef = useRef();
@@ -57,8 +57,11 @@ function NewTask({ onAddTask, onCancel }) {
         </p>
       )}
       <p className="actions">
-        <button type="button" onClick={onCancel}>Cancel</button>
+        <button type="button" onClick={onCancel}>
+          Cancel
+        </button>
         <button type="submit">Add Task</button>
+        <button type="submit">Delete</button>
       </p>
     </form>
   );
