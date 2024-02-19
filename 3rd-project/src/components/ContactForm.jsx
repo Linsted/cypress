@@ -1,23 +1,23 @@
-import { useEffect, useReducer, useState } from 'react';
-import classes from './ContactForm.module.css';
+import { useEffect, useReducer, useState } from "react";
+import classes from "./ContactForm.module.css";
 
 const initialState = {
   name: {
-    value: '',
+    value: "",
     blurred: false,
   },
   email: {
-    value: '',
+    value: "",
     blurred: false,
   },
   message: {
-    value: '',
+    value: "",
     blurred: false,
   },
 };
 
 const formReducer = (state, action) => {
-  if (action.type === 'INPUT_CHANGE') {
+  if (action.type === "INPUT_CHANGE") {
     return {
       ...state,
       [action.input]: {
@@ -27,7 +27,7 @@ const formReducer = (state, action) => {
     };
   }
 
-  if (action.type === 'INPUT_BLUR') {
+  if (action.type === "INPUT_BLUR") {
     return {
       ...state,
       [action.input]: {
@@ -45,9 +45,9 @@ function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const { name, email, message } = formState;
-  const nameIsValid = name.value.trim() !== '';
-  const emailIsValid = email.value.trim() !== '' && email.value.includes('@');
-  const messageIsValid = message.value.trim() !== '';
+  const nameIsValid = name.value.trim() !== "";
+  const emailIsValid = email.value.trim() !== "" && email.value.includes("@");
+  const messageIsValid = message.value.trim() !== "";
 
   const nameIsInvalid = !nameIsValid && name.blurred;
   const emailIsInvalid = !emailIsValid && email.blurred;
@@ -55,7 +55,7 @@ function ContactForm() {
 
   useEffect(() => {
     if (isSubmitting) {
-      console.log('Sending message...');
+      console.log("Sending message...");
       const timer = setTimeout(() => {
         setIsSubmitting(false);
       }, 1000);
@@ -66,7 +66,7 @@ function ContactForm() {
 
   function changeInputHandler(event) {
     dispatch({
-      type: 'INPUT_CHANGE',
+      type: "INPUT_CHANGE",
       input: event.target.id,
       value: event.target.value,
     });
@@ -74,7 +74,7 @@ function ContactForm() {
 
   function blurInputHandler(event) {
     dispatch({
-      type: 'INPUT_BLUR',
+      type: "INPUT_BLUR",
       input: event.target.id,
     });
   }
@@ -134,7 +134,7 @@ function ContactForm() {
             data-cy="contact-btn-submit"
             disabled={isSubmitting}
           >
-            {isSubmitting ? 'Sending...' : 'Send Message'}
+            {isSubmitting ? "Sending..." : "Send Message"}
           </button>
         </p>
       </form>
